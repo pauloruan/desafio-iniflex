@@ -4,7 +4,9 @@ import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Principal {
 	public static void main(String[] args) {
@@ -47,7 +49,15 @@ public class Principal {
             funcionario.setSalario(novoSalario);
         }
         
+        // 3.5 - Agrupar os funcionários por função em um MAP
+        Map<String, List<Funcionario>> funcionariosPorFuncao = new HashMap<>();
+
+        for (Funcionario funcionario : funcionarios) {
+            String funcao = funcionario.getFuncao();
+            if (!funcionariosPorFuncao.containsKey(funcao)) {
+                funcionariosPorFuncao.put(funcao, new ArrayList<>());
+            }
+            funcionariosPorFuncao.get(funcao).add(funcionario);
+        }
 	}
-	
-	
 }
