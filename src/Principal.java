@@ -4,6 +4,7 @@ import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -104,6 +105,19 @@ public class Principal {
             System.out.println("Idade: " + idade);
             System.out.println();
         }
+        
+        // 3.10 - Imprimir a lista de funcionários em ordem alfabética
+        funcionarios.sort(Comparator.comparing(Funcionario::getNome));
+
+        System.out.println("Lista de funcionários em ordem alfabética:");
+        for (Funcionario funcionario : funcionarios) {
+            System.out.println("Nome: " + funcionario.getNome());
+            System.out.println("Data de Nascimento: " + funcionario.getDataNascimento().format(dateFormatter));
+            System.out.println("Salário: " + currencyFormatter.format(funcionario.getSalario()));
+            System.out.println("Função: " + funcionario.getFuncao());
+            System.out.println();
+        }
+        System.out.println();
         
 	}
 }
