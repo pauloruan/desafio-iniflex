@@ -59,5 +59,18 @@ public class Principal {
             }
             funcionariosPorFuncao.get(funcao).add(funcionario);
         }
+        
+        // 3.6 - Imprimir os funcionários agrupados por função
+        for (Map.Entry<String, List<Funcionario>> entry : funcionariosPorFuncao.entrySet()) {
+            String funcao = entry.getKey();
+            List<Funcionario> funcionariosDaFuncao = entry.getValue();
+
+            System.out.println("Função: " + funcao);
+            for (Funcionario funcionario : funcionariosDaFuncao) {
+                System.out.println("Nome: " + funcionario.getNome());
+                System.out.println("Salário: " + currencyFormatter.format(funcionario.getSalario()));
+            }
+            System.out.println();
+        }
 	}
 }
