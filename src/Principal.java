@@ -15,8 +15,15 @@ public class Principal {
 		funcionarios.add(new Funcionario("Alice", LocalDate.of(1995, 1, 5), BigDecimal.valueOf(2234.68), "Recepcionista"));
 		funcionarios.add(new Funcionario("Heitor", LocalDate.of(1999, 11, 19), BigDecimal.valueOf(1582.72), "Operador"));
 		funcionarios.add(new Funcionario("Arthur", LocalDate.of(1993, 3, 31), BigDecimal.valueOf(4071.84), "Contador"));
-		funcionarios.add(new Funcionario("Laura", LocalDate.of(1993, 7, 8), BigDecimal.valueOf(3017.45), "Gerente"));
+		funcionarios.add(new Funcionario("Laura", LocalDate.of(1994, 7, 8), BigDecimal.valueOf(3017.45), "Gerente"));
 		funcionarios.add(new Funcionario("Heloísa", LocalDate.of(2003, 5, 24), BigDecimal.valueOf(1606.85), "Eletricista"));
 		funcionarios.add(new Funcionario("Helena", LocalDate.of(1996, 9, 2), BigDecimal.valueOf(2799.93), "Gerente"));
+		
+		// 3.2 - Remover o funcionário "João" da lista.
+		funcionarios.removeIf(funcionario -> funcionario.getNome().equals("João"));
+		System.out.println("Funcionário \"João\" removido.");
+		
 	}
+	
+	
 }
