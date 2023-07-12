@@ -21,7 +21,7 @@ Ações implementadas na classe `Principal`:
 - Remover o funcionário "João" da lista.
 - Imprimir todos os funcionários com todas as suas informações.
 - Atualizar os salários dos funcionários com um aumento de 10%.
-- Agrupar os funcionários por função em um mapa.
+- Agrupar os funcionários por função em um MAP.
 - Imprimir os funcionários agrupados por função.
 - Imprimir os funcionários que fazem aniversário nos meses 10 e 12.
 - Imprimir o funcionário com a maior idade.
