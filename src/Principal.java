@@ -41,6 +41,12 @@ public class Principal {
             System.out.println();
         }
         
+        // 3.4 - Aumentar o salário dos funcionários em 10%.
+        for (Funcionario funcionario : funcionarios) {
+            BigDecimal novoSalario = funcionario.getSalario().multiply(BigDecimal.valueOf(1.10));
+            funcionario.setSalario(novoSalario);
+        }
+        
 	}
 	
 	
