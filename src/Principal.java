@@ -119,5 +119,14 @@ public class Principal {
         }
         System.out.println();
         
+        // 3.11 - Imprimir o total dos salários dos funcionários
+        BigDecimal totalSalarios = BigDecimal.ZERO;
+
+        for (Funcionario funcionario : funcionarios) {
+            totalSalarios = totalSalarios.add(funcionario.getSalario());
+        }
+
+        System.out.println("Total dos salários dos funcionários: " + currencyFormatter.format(totalSalarios));
+        System.out.println();
 	}
 }
