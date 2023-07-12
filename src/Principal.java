@@ -83,5 +83,27 @@ public class Principal {
             }
         }
         System.out.println();
+        
+        // 3.9 - Imprimir o funcionário com a maior idade
+        LocalDate hoje = LocalDate.now();
+        int maiorIdade = -1;
+        Funcionario funcionarioMaisVelho = null;
+
+        for (Funcionario funcionario : funcionarios) {
+            int idade = hoje.getYear() - funcionario.getDataNascimento().getYear();
+            if (idade > maiorIdade) {
+                maiorIdade = idade;
+                funcionarioMaisVelho = funcionario;
+            }
+        }
+
+        if (funcionarioMaisVelho != null) {
+            int idade = maiorIdade;
+            System.out.println("Funcionário mais velho:");
+            System.out.println("Nome: " + funcionarioMaisVelho.getNome());
+            System.out.println("Idade: " + idade);
+            System.out.println();
+        }
+        
 	}
 }
