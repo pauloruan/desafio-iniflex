@@ -1,5 +1,8 @@
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +26,21 @@ public class Principal {
 		funcionarios.removeIf(funcionario -> funcionario.getNome().equals("João"));
 		System.out.println("Funcionário \"João\" removido.");
 		
+		// 3.3 – Imprimir todos os funcionários com todas suas informações.
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        NumberFormat currencyFormatter = new DecimalFormat("#,##0.00");
+        
+        for (Funcionario funcionario : funcionarios) {
+            String dataNascimentoFormatted = funcionario.getDataNascimento().format(dateFormatter);
+            String salarioFormatted = currencyFormatter.format(funcionario.getSalario());
+
+            System.out.println("Nome: " + funcionario.getNome());
+            System.out.println("Data de Nascimento: " + dataNascimentoFormatted);
+            System.out.println("Salário: " + salarioFormatted);
+            System.out.println("Função: " + funcionario.getFuncao());
+            System.out.println();
+        }
+        
 	}
 	
 	
