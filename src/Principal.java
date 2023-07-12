@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.time.LocalDate;
@@ -24,15 +25,15 @@ public class Principal {
 		funcionarios.add(new Funcionario("Laura", LocalDate.of(1994, 7, 8), BigDecimal.valueOf(3017.45), "Gerente"));
 		funcionarios.add(new Funcionario("Heloísa", LocalDate.of(2003, 5, 24), BigDecimal.valueOf(1606.85), "Eletricista"));
 		funcionarios.add(new Funcionario("Helena", LocalDate.of(1996, 9, 2), BigDecimal.valueOf(2799.93), "Gerente"));
-		
+
 		// 3.2 - Remover o funcionário "João" da lista.
 		funcionarios.removeIf(funcionario -> funcionario.getNome().equals("João"));
 		System.out.println("Funcionário \"João\" removido.");
-		
+
 		// 3.3 – Imprimir todos os funcionários com todas suas informações.
 		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         NumberFormat currencyFormatter = new DecimalFormat("#,##0.00");
-        
+
         for (Funcionario funcionario : funcionarios) {
             String dataNascimentoFormatted = funcionario.getDataNascimento().format(dateFormatter);
             String salarioFormatted = currencyFormatter.format(funcionario.getSalario());
@@ -43,13 +44,13 @@ public class Principal {
             System.out.println("Função: " + funcionario.getFuncao());
             System.out.println();
         }
-        
+
         // 3.4 - Aumentar o salário dos funcionários em 10%.
         for (Funcionario funcionario : funcionarios) {
             BigDecimal novoSalario = funcionario.getSalario().multiply(BigDecimal.valueOf(1.10));
             funcionario.setSalario(novoSalario);
         }
-        
+
         // 3.5 - Agrupar os funcionários por função em um MAP
         Map<String, List<Funcionario>> funcionariosPorFuncao = new HashMap<>();
 
@@ -60,7 +61,7 @@ public class Principal {
             }
             funcionariosPorFuncao.get(funcao).add(funcionario);
         }
-        
+
         // 3.6 - Imprimir os funcionários agrupados por função
         for (Map.Entry<String, List<Funcionario>> entry : funcionariosPorFuncao.entrySet()) {
             String funcao = entry.getKey();
@@ -73,7 +74,7 @@ public class Principal {
             }
             System.out.println();
         }
-        
+
         // 3.8 - Imprimir os funcionários que fazem aniversário nos meses 10 e 12
         System.out.println("Funcionários que fazem aniversário no mês 10 e 12:");
         for (Funcionario funcionario : funcionarios) {
@@ -84,7 +85,7 @@ public class Principal {
             }
         }
         System.out.println();
-        
+
         // 3.9 - Imprimir o funcionário com a maior idade
         LocalDate hoje = LocalDate.now();
         int maiorIdade = -1;
@@ -105,7 +106,7 @@ public class Principal {
             System.out.println("Idade: " + idade);
             System.out.println();
         }
-        
+
         // 3.10 - Imprimir a lista de funcionários em ordem alfabética
         funcionarios.sort(Comparator.comparing(Funcionario::getNome));
 
@@ -118,7 +119,7 @@ public class Principal {
             System.out.println();
         }
         System.out.println();
-        
+
         // 3.11 - Imprimir o total dos salários dos funcionários
         BigDecimal totalSalarios = BigDecimal.ZERO;
 
@@ -128,5 +129,16 @@ public class Principal {
 
         System.out.println("Total dos salários dos funcionários: " + currencyFormatter.format(totalSalarios));
         System.out.println();
+
+        // 3.12 - Imprimir quantos salários mínimos ganha cada funcionário
+        BigDecimal salarioMinimo = BigDecimal.valueOf(1212.00);
+
+        System.out.println("Quantos salários mínimos ganha cada funcionário:");
+        for (Funcionario funcionario : funcionarios) {
+            BigDecimal quantidadeSalariosMinimos = funcionario.getSalario().divide(salarioMinimo, 2, RoundingMode.HALF_UP);
+            System.out.println("Nome: " + funcionario.getNome());
+            System.out.println("Quantidade de salários mínimos: " + quantidadeSalariosMinimos);
+            System.out.println();
+        }
 	}
 }
